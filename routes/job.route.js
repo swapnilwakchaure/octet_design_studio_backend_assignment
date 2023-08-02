@@ -1,6 +1,7 @@
 // install required dependencies
 const express = require('express');
 const { JobModel } = require('../models/job.model');
+const data = require('../assets/data.json');
 
 
 // create a job route for building crud app
@@ -24,15 +25,33 @@ jobRoute.get('/', async (request, response) => {
 
 
 // ---------------- POST DATA OF JOB ROUTE ---------------- //
-jobRoute.post('/add', async (request, response) => {
-    const data = request.body;
+jobRoute.post('/addjobs', async (request, response) => {
+    const { name, location, posted, status, applied, jobViews, daysLeft, premium, dateFormat } = request.body;
+    // console.log('data: ',data);
 
     try {
-        const add_data = new JobModel(data);
-        await add_data.save();
-        response.send({
-            'message': 'job data successfully added'
-        });
+        if (name && location && posted && status && applied && jobViews && daysLeft && dateFormat) {
+            const add_data = new JobModel({
+                name,
+                location,
+                posted,
+                status,
+                applied,
+                jobViews,
+                daysLeft,
+                premium,
+                dateFormat
+            });
+            await add_data.save();
+            response.send({
+                'message': 'job data successfully added',
+                'data': data
+            });
+        } else {
+            response.send({
+                'message': 'All fields are required'
+            })
+        }
     } catch (error) {
         response.send({
             'message': 'something went wrong',
@@ -77,6 +96,24 @@ jobRoute.delete("/delete/:id", async (request, response) => {
         });
     }
 });
+
+
+
+// insert the data in one call
+/*
+const insertData = async () => {
+    try {
+        const docs = await JobModel.insertMany(data);
+        return Promise.resolve(docs);
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
+
+insertData()
+    .then((res) => console.log('res: ', res))
+    .catch((error) => console.log('error: ', error))
+*/
 
 
 

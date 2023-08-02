@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            border: 1px solid red;
+            width: 90%;
+            max-width: 360px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        form > input {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form id="form">
+            <input type="text" id="name" placeholder="job title" />
+            <input type="text" id="location" placeholder="city, country" />
+            <input type="text" id="posted" placeholder="post date 1st Jan" />
+            <select id="">
+                <option value="">Select Status</option>
+                <option value="Published">Published</option>
+                <option value="Not Published">Not Published</option>
+            </select>
+            <input type="number" id="applied" placeholder="applied" />
+            <input type="number" id="jobViews" placeholder="job views" />
+            <input type="number" id="daysLeft" placeholder="days left" />
+            <label>Premium</label>
+            <input type="checkbox" id="premium" />
+            <input type="date" id="dateFormat" />
+            <button>Submit</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    document.querySelector('#form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.querySelector('#name').value;
+        const location = document.querySelector('#location').value;
+        const posted = document.querySelector('#posted').value;
+        
+        const applied = document.querySelector('#applied').value;
+        const jobViews = document.querySelector('#jobViews').value;
+        const daysLeft = document.querySelector('#daysLeft').value;
+
+        const premium = document.querySelector('#premium').value;
+        
+        const dateFormat = document.querySelector('#dateFormat').value;
+
+        const payload = { name, location, posted, applied, jobViews, daysLeft, premium, dateFormat };
+
+        console.log('payload: ',payload);
+    });
+
+</script>
