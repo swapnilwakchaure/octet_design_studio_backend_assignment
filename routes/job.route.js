@@ -1,12 +1,13 @@
+// install required dependencies
 const express = require('express');
 const { JobModel } = require('../models/job.model');
 
 
-
+// create a job route for building crud app
 const jobRoute = express.Router();
 
 
-
+// ---------------- GET DATA OF JOB ROUTE ---------------- //
 jobRoute.get('/', async (request, response) => {
     const query = request.query;
 
@@ -22,7 +23,7 @@ jobRoute.get('/', async (request, response) => {
 });
 
 
-
+// ---------------- POST DATA OF JOB ROUTE ---------------- //
 jobRoute.post('/add', async (request, response) => {
     const data = request.body;
 
@@ -41,4 +42,43 @@ jobRoute.post('/add', async (request, response) => {
 });
 
 
+// ---------------- UPDATE DATA OF JOB ROUTE ---------------- //
+jobRoute.patch("/update/:id", async (request, response) => {
+    const ID = request.params.id;
+    const payload = request.body;
+
+    try {
+        await JobModel.findByIdAndUpdate({ _id: ID }, payload);
+        response.send({
+            'message': `ob data of Id: ${ID} is successfully updated`
+        });
+    } catch (error) {
+        response.send({
+            'message': `Cannot able to update the job data of id: ${ID}`,
+            'error': error
+        });
+    }
+});
+
+
+// ---------------- DELETE DATA OF JOB ROUTE ---------------- //
+jobRoute.delete("/delete/:id", async (request, response) => {
+    const ID = request.params.id;
+
+    try {
+        await JobModel.findByIdAndDelete({ _id: ID });
+        response.send({
+            'message': `job data of id: ${ID} is successfully deleted from the database`
+        });
+    } catch (error) {
+        response.send({
+            'message': `Cannot able to delete the job data of id: ${ID}`,
+            'error': error
+        });
+    }
+});
+
+
+
+// export it to use everywhere in our local file
 module.exports = { jobRoute };
