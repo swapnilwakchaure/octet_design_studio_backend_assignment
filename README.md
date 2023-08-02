@@ -4,6 +4,7 @@ Design the data structure and build a RESTful API which provides the job related
 
 
 ## deployed url of backend API below
+`https://octet-design-studio-backend-api-url.vercel.app`
 
 
 
@@ -25,22 +26,46 @@ Design the data structure and build a RESTful API which provides the job related
 
 ### to fetch the get request to API
 
-``
+`https://octet-design-studio-backend-api-url.vercel.app/jobs`
+
 
 
 ### to fetch the post request to API
 
-``
+`https://octet-design-studio-backend-api-url.vercel.app/jobs/addjobs`
 
+we need to provide all the detailed related data and it takes care about the required fields
 
-### to fetch the delete request to API
+```js
+let example,
 
-``
+const payload = { name, location, posted, status, applied, jobViews, daysLeft, premium, dateFormat };
+
+fetch(`api-url`, payload)
+    .then((res) => {
+        console.log('res: ',res);
+    })
+    .catch((error) => {
+        console.log('error: ',error);
+    })
+
+```
+
 
 
 ### to fetch the update request to API
 
-``
+`https://octet-design-studio-backend-api-url.vercel.app/jobs/update/:id`
+
+for update the data we need to provide an id as a params and data as a body.
+
+
+
+### to fetch the delete request to API
+
+`https://octet-design-studio-backend-api-url.vercel.app/jobs/delete/:id`
+
+for delete a unique element from the database, so need to provide an id as query params and it will automatically handled by backend code.
 
 
 
