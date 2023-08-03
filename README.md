@@ -8,6 +8,34 @@ Design the data structure and build a RESTful API which provides the job related
 
 
 
+
+### Authentication Routes (register / login)
+
+1. For REGISTRATION URL
+
+`/auth/register`    route accepts 
+                                   `name`     (String)
+                                   `email`    (String)
+                                   `password` (String)
+
+and hash the password into a long string and provided a success message to the user
+
+
+
+2. For LOGIN URL
+
+`/auth/login`       route accepts
+                                   `email`    (String)
+                                   `password` (String)
+
+and provided the token to the login user
+
+
+
+
+## PRODUCT Routes
+
+
 ## below sample data when you fetch get request to the API
 
 ```js
@@ -27,17 +55,22 @@ Design the data structure and build a RESTful API which provides the job related
 
 
 
-### to fetch the get request to API
+### to fetch the requests to API
 
-`https://octet-design-studio-backend-api-url.vercel.app/jobs`
+1. GET Route
+
+`/jobs`
+
+by fetch will get the data
 
 
 
-### to fetch the post request to API
+2. POST Route
 
-`https://octet-design-studio-backend-api-url.vercel.app/jobs/addjobs`
+`/jobs/addjobs`
 
 we need to provide all the detailed related data and it takes care about the required fields
+
 
 ```js
 let example,
@@ -56,19 +89,20 @@ fetch(`api-url`, payload)
 
 
 
-### to fetch the update request to API
+3. PATCH Route
 
-`https://octet-design-studio-backend-api-url.vercel.app/jobs/update/:id`
+`/jobs/update/:id`
 
 for update the data we need to provide an id as a params and data as a body.
 
 
 
-### to fetch the delete request to API
+4. DELETE Route
 
-`https://octet-design-studio-backend-api-url.vercel.app/jobs/delete/:id`
+`/jobs/delete/:id`
 
 for delete a unique element from the database, so need to provide an id as query params and it will automatically handled by backend code.
+
 
 
 
