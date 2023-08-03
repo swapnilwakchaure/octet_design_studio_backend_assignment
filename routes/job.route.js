@@ -69,7 +69,7 @@ jobRoute.patch("/update/:id", async (request, response) => {
     try {
         await JobModel.findByIdAndUpdate({ _id: ID }, payload);
         response.send({
-            'message': `ob data of Id: ${ID} is successfully updated`
+            'message': `job data of Id: ${ID} is successfully updated`
         });
     } catch (error) {
         response.send({

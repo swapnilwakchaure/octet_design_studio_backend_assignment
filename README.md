@@ -24,6 +24,9 @@ Design the data structure and build a RESTful API which provides the job related
     }
 ```
 
+
+
+
 ### to fetch the get request to API
 
 `https://octet-design-studio-backend-api-url.vercel.app/jobs`

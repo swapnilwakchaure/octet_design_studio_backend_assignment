@@ -8,6 +8,8 @@ mongoose.set('strictQuery', true)
 
 // import local files
 const { connection } = require('./connection/db.connect');
+const { authenticate } = require('./middleware/authenticate');
+const { authRoute } = require('./routes/auth.route');
 const { jobRoute } = require('./routes/job.route');
 
 
@@ -25,6 +27,9 @@ app.get('/', (request, response) => {
 });
 
 // import all job related routes here
+app.use('/auth', authRoute);
+app.use(authenticate);
+// if user is authenticate then and then only user can visit to the jobroute
 app.use('/jobs', jobRoute);
 
 
