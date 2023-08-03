@@ -1,9 +1,9 @@
-# octet_design_studio_backend_assignment
+# Octet_Design_Studio_Backend_Assignment
 
 Design the data structure and build a RESTful API which provides the job related data and able to do crud operation on it.
 
 
-## deployed url of backend API below
+## Deployed url of backend API below
 `https://octet-design-studio-backend-api-url.vercel.app`
 
 
@@ -36,7 +36,7 @@ and provided the token to the login user
 ## PRODUCT Routes
 
 
-## below sample data when you fetch get request to the API
+## Below sample data when you fetch get request to the API
 
 ```js
     {
@@ -106,4 +106,4 @@ for delete a unique element from the database, so need to provide an id as query
 
 
 
-## Thank you for reading
+## Thank you for reading.
